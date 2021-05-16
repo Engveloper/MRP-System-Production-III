@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\LoDeProduccion.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\LoDeProduccion.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\LoDeProduccion.csproj",
+        "projectName": "LoDeProduccion",
+        "projectPath": "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\LoDeProduccion.csproj",
+        "packagesPath": "C:\\Users\\aleja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aleja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "EMX06t7Sj5/Y/X/0yuuDQMXxN2FMWcKkwj0+28IAwn4YuFXjbMvM8pQR4rMo+k9Owuts5VM1vX7A1S4kHp3Knw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aleja\\Documents\\UNI\\CUARTO AÑO\\Primer Semestre\\PRODUCCIÓN III\\LoDeProduccion\\LoDeProduccion\\LoDeProduccion.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aleja\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\aleja\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
