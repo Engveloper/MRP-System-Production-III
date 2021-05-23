@@ -128,21 +128,30 @@
                         </StackPanel>
                     </ListViewItem>
 
-                    <!-- Sample -->
+                    <!-- Lotes económicos -->
 
-                    <ListViewItem x:Name="itmSample1" Height="60" ToolTip="Sample1">
+                    <ListViewItem x:Name="itmLotes" Height="60" ToolTip="Lotes económicos">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BoxVariantClosed" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
-                            <TextBlock Text="Sample" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Lotes económicos" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
 
-                    <!-- Sample -->
+                    <!-- Modelos de Inventario -->
 
-                    <ListViewItem x:Name="itmSample2" Height="60" ToolTip="Sample2">
+                    <ListViewItem x:Name="itmInventario" Height="60" ToolTip="Modelos de inventario">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="PeopleGroup" Width="25" Height="25" VerticalAlignment="Center " Margin="10"/>
-                            <TextBlock Text="Sample" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="Package" Width="25" Height="25" VerticalAlignment="Center " Margin="10"/>
+                            <TextBlock Text="Inventario" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    
+                    <!-- Plan agregado -->
+
+                    <ListViewItem x:Name="itmPlanAgregado" Height="60" ToolTip="Plan agregado">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Register" Width="25" Height="25" VerticalAlignment="Center " Margin="10"/>
+                            <TextBlock Text="Plan agregado" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
 

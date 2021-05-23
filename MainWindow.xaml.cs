@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Treeview;
 
 namespace LoDeProduccion
 {
@@ -54,8 +55,12 @@ namespace LoDeProduccion
                     uc = new ModeloQ();
                     Contenedor.Children.Add(uc);
                     break;
+                case 3:
+                    uc = new PlanAgregado();
+                    Contenedor.Children.Add(uc);
+                    break;
                 default:
-                    uc = new UCLOTES();
+                    uc = new UCInicio();
                     Contenedor.Children.Add(uc);
                     break;
             }
