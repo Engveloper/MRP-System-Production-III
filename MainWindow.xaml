@@ -1,13 +1,155 @@
 ﻿<Window x:Class="LoDeProduccion.MainWindow"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoDeProduccion"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900" Loaded="Window_Loaded">
-    <Grid>
-        <Grid x:Name="Contenedor"></Grid>
+        Height="700" Width="1080" WindowStartupLocation="CenterScreen" 
+        Foreground="White" ResizeMode="NoResize" WindowStyle="None"
+        Loaded="Window_Loaded">
+
+    <Window.Resources>
+
+        <!-- ANIMACIONES -->
+
+        <!-- ABRIR MENU LATERAL -->
+
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Contenedor">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1018"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="882"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Para solucionar error-->
+
+        <!-- CERRAR MENU LATERAL-->
+
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Contenedor">
+                <EasingDoubleKeyFrame KeyTime="0" Value="882"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1018"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Window.Resources>
+
+    <!-- EVENTOS -->
+
+    <Window.Triggers>
+
+        <!-- CLICK BOTON ABRIR MENU -->
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+
+        <!-- CLICK BOTON CERRAR MENU -->
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+
+    </Window.Triggers>
+
+    <Grid Background="DarkGray">
+
+        <!-- Lugar donde se muestran los controles de usuarios -->
+
+        <Grid x:Name="Contenedor" HorizontalAlignment="Right" 
+              VerticalAlignment="Bottom" Height="627" Width="1018"/>
+
+        <!-- Franja de arriba -->
+
+        <Grid x:Name="F" VerticalAlignment="Top" Background="#FF183861" Height="70" MouseDown="F_MouseDown" >
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+            </Grid.Effect>
+
+            <!-- Esquina superior derecha-->
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Height="40" Margin="0 0 10 0">
+                <Button x:Name="btnCerrar" Content="Cerrar" VerticalAlignment="Center" FontSize="15" Foreground="White" Background="#FF183861" BorderBrush="White" Padding="20 5" Click="btnCerrar_Click"/>
+            </StackPanel>
+            
+            <TextBlock Text="Producción III" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" Foreground="White" FontFamily="Times New Roman"/>
+        </Grid>
+
+        <!-- MENU PRINCIPAL, ubicado en el lateral izquierdo -->
+
+        <Grid x:Name="gridMenu" Width="60" HorizontalAlignment="Left" Background="#FF183861">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
+            </Grid.Effect>
+            <StackPanel>
+
+                <!-- Grid de la foto del usuario-->
+
+                <Grid x:Name="gridOC" Background="White" Height="150" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+
+                    <!-- BOTON CERRAR MENU -->
+                    <Button x:Name="btnCloseMenu" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="btnCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="30" Foreground="#FF183861"/>
+                    </Button>
+
+                    <!-- BOTON ABRIR MENU -->
+
+                    <Button x:Name="btnOpenMenu" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="30" Foreground="#FF183861"/>
+                    </Button>
+                </Grid>
+
+                <!-- Lista de botones del MENU -->
+
+                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White" SelectionChanged="ListViewMenu_SelectionChanged">
+
+                    <!-- INICIO -->
+
+                    <ListViewItem x:Name="itmInicio" Height="60" ToolTip="Inicio">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Home" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Inicio" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <!-- Sample -->
+
+                    <ListViewItem x:Name="itmSample1" Height="60" ToolTip="Sample1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BoxVariantClosed" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Sample" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <!-- Sample -->
+
+                    <ListViewItem x:Name="itmSample2" Height="60" ToolTip="Sample2">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PeopleGroup" Width="25" Height="25" VerticalAlignment="Center " Margin="10"/>
+                            <TextBlock Text="Sample" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>
+
