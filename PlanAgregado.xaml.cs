@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Treeview
+namespace LoDeProduccion
 {
     /// <summary>
     /// Interaction logic for PlanAgregado.xaml
