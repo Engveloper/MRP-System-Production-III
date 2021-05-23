@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Treeview;
 
 namespace LoDeProduccion
 {
@@ -40,10 +39,8 @@ namespace LoDeProduccion
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserControl uc = new UserControl();
+            UserControl uc;
             Contenedor.Children.Clear();
-            uc = new UCLOTES();
-            Contenedor.Children.Add(uc);
 
             switch (((ListView)sender).SelectedIndex)
             {
