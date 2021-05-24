@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="LoDeProduccion.MRP.MRP"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoDeProduccion.MRP"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Nombre del producto-->
+        <StackPanel Grid.Row="0">
+        <TextBlock x:Name="NombreProducto" Text="Ingrese el nombre del producto" />
+        <TextBox x:Name="IngNombreProducto" Width="200" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <!--Tiempo de espera-->
+        <StackPanel Grid.Row="1">
+        <TextBlock x:Name="TiempoEsperaProducto" Text="Ingrese el tiempo de espera del producto"/>
+        <TextBox x:Name="IngTiempoEsperaProducto" Width="200" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <!--Numero de componentes-->
+        <StackPanel Grid.Row="2">
+            
+        
+        <TextBlock x:Name="NumeroComponentes" Text="Ingrese el numero de componentes del producto"/>
+        <TextBox x:Name="IngNumeroComponentes" Width="200" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <!--Lista de componentes-->
+        <StackPanel Grid.Row="3">
+        <TextBlock x:Name="ListadoText" Text="Seleccione el producto padre de este componente" Visibility="Collapsed"/>
+        <ComboBox x:Name="ListadoComponentes" HorizontalAlignment="Left" Visibility="Collapsed">
+
+        </ComboBox>
+        </StackPanel>
+        <!--Botones-->
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <!--Agregar-->
+            <Button Content="Agregar componente" x:Name="Agregar" Click="Agregar_Click" HorizontalAlignment="Left"/>
+
+            <!--Finalizar-->
+            <Button Content="Finalizar" x:Name="Finalizar" Click="Finalizar_Click" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+
+        <!--Treeview-->
+        <TreeView x:Name="Arbol" Visibility="Collapsed" Grid.Row="5">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Elementos}">
+                    <TextBlock Text="{Binding Nombre}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>

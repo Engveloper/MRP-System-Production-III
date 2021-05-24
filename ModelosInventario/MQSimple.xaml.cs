@@ -27,7 +27,7 @@ namespace LoDeProduccion
         {
             lblR.Visibility = Visibility.Visible;
             txtResultados.Visibility = Visibility.Visible;
-            txtResultados.Text = "La cantidad optima a pedir es de " + QOPT() + "\n \nEl número de pedidos ha hacerse al año sería de "
+            txtResultados.Text = "La cantidad óptima a pedir es de " + QOPT() + "\n \nEl número de pedidos ha hacerse al año sería de "
                 + NPedidos() + "\n \nEl costo de anual sería de " + CostoTotal() + "\n \nSe ordenará cada " + Math.Truncate( 365 / NPedidos()) + 
                 " días\n\nO cuando solo se tengan " +ROP()+" unidades en el inventario";
         }
@@ -116,6 +116,41 @@ namespace LoDeProduccion
             }
 
             return d;
+        }
+
+        private void txtDemanda_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtCostoPedir_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtCostoProducto_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtCostoMan_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtPlazo_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        public static void soloNumeros(KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
         }
     }
 }
