@@ -93,7 +93,18 @@ namespace Treeview
         public int TrabajadoresContratados
         {
             get { return trabajadoresContratados; }
-            set { trabajadoresContratados = value; }
+            set 
+            {
+                int temp = trabajadoresRequeridos - trabajadoresActuales;
+                if (temp > 0)
+                {
+                    trabajadoresContratados = temp;
+                }
+                else
+                {
+                    trabajadoresContratados = 0;
+                }
+            }
         }
 
         public float Contratar
@@ -134,7 +145,7 @@ namespace Treeview
         public float CostoTrabajadoresDespedidos
         {
             get { return costoTrabajadoresDespedidos; }
-            set { costoTrabajadoresContratados = trabajadoresDespedidos * despido; }
+            set { costoTrabajadoresDespedidos = trabajadoresDespedidos * despido; }
         }
 
         public float HoraNormal
@@ -164,7 +175,18 @@ namespace Treeview
         public int Inventario
         {
             get { return inventario; }
-            set { inventario = value; }
+            set 
+            {
+                int temp = unidadesProducidas - demanda;
+                if (temp > 0)
+                {
+                    inventario = temp;
+                }
+                else
+                {
+                    inventario = 0;
+                }
+            }
         }
 
         public float Mantener
