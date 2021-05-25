@@ -150,8 +150,17 @@
 
                     <ListViewItem x:Name="itmPlanAgregado" Height="60" ToolTip="Plan agregado">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Register" Width="25" Height="25" VerticalAlignment="Center " Margin="10"/>
+                            <materialDesign:PackIcon Kind="Register" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Plan agregado" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    
+                    <!-- MRP -->
+
+                    <ListViewItem x:Name="itmMRP" Height="60" ToolTip="Material Requirement plan">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PackageOpen" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="MRP" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
 

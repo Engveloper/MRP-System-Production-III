@@ -56,6 +56,10 @@ namespace LoDeProduccion
                     uc = new PlanAgregado();
                     Contenedor.Children.Add(uc);
                     break;
+                case 4:
+                    uc = new MRP.MRP();
+                    Contenedor.Children.Add(uc);
+                    break;
                 default:
                     uc = new UCInicio();
                     Contenedor.Children.Add(uc);

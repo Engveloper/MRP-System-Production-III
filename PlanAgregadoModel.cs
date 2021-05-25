@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Treeview
+namespace LoDeProduccion
 {
 
-    class PlanAgregadoModel
+    public class PlanAgregadoModel
     {
         private float materiaPrima;
         private float costoFijo;
