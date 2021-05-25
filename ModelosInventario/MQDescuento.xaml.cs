@@ -64,6 +64,11 @@ namespace LoDeProduccion
             else
             {
                 txtResultados.Text = "";
+
+                foreach(Proveedores P in dgProveedores.Items)
+                {
+
+                }
             }
         }
 
