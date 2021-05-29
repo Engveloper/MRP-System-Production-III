@@ -22,10 +22,7 @@ namespace LoDeProduccion
         {
             InitializeComponent();
         }
-        DataGrid l4l = new DataGrid();
-        DataGrid EOQ = new DataGrid();
-        DataGrid LTC = new DataGrid();
-        DataGrid LUC = new DataGrid();
+        
 
 
 
@@ -80,7 +77,7 @@ namespace LoDeProduccion
             }
             else if (Validar())
             {
-                stkpTablas.Children.Clear();
+                //stkpTablas.Children.Clear();
                 l4l.ItemsSource = null;
                 EOQ.ItemsSource = null;
                 LTC.ItemsSource = null;
@@ -88,7 +85,7 @@ namespace LoDeProduccion
 
                 CalcularL4L();
                 CalcularOtros();
-                AgregarTablas();
+               AgregarTablas();
             }
         }
 
@@ -122,7 +119,8 @@ namespace LoDeProduccion
                 material.Add(cot);
             }
 
-            l4l.ItemsSource = material;
+         
+           l4l.ItemsSource = material;
 
         }
 
@@ -147,7 +145,7 @@ namespace LoDeProduccion
 
             //Calcular LTC
             decimal cm = H / 52;
-            MessageBox.Show("H" + H + " Y CM" + cm);
+         //   MessageBox.Show("H" + H + " Y CM" + cm);
             LTC.ItemsSource = Calcular(H, C, S, CalcularProd(0, S, cm));
             //Calcular LUC
             LUC.ItemsSource = Calcular(H, C, S, CalcularProd(1, S, cm));
@@ -329,9 +327,20 @@ namespace LoDeProduccion
 
             return bandera;
         }
+
+        public static void soloNumeros(KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9
+                || e.Key == Key.OemComma || e.Key == Key.OemPeriod)
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
         private void AgregarTablas()
         {
-            Label l = new Label();
+            /*Label l = new Label();
             l.FontSize = 40;
             l.Content = "L4L";
             l.Height = 50;
@@ -409,7 +418,36 @@ namespace LoDeProduccion
             stkpTablas.Children.Add(l3);
             stkpTablas.Children.Add(LTC);
             stkpTablas.Children.Add(l4);
-            stkpTablas.Children.Add(LUC);
+            stkpTablas.Children.Add(LUC);*/
+
+            lblEOQ.Visibility = Visibility.Visible;
+            lblL4L.Visibility = Visibility.Visible;
+            lblLUC.Visibility = Visibility.Visible;
+            lclLTC.Visibility = Visibility.Visible;
+            l4l.Visibility = Visibility.Visible;
+            EOQ.Visibility = Visibility.Visible;
+            LTC.Visibility = Visibility.Visible;
+            LUC.Visibility = Visibility.Visible;
+        }
+
+        private void txtcm_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtcp_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtcma_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
+
+        private void txtnn_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
         }
     }
 
