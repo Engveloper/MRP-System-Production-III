@@ -5,11 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoDeProduccion"
              mc:Ignorable="d" 
-<<<<<<< HEAD:MRP/MQSimple.xaml
              d:DesignHeight="700" d:DesignWidth="1080" Background="Transparent">
-=======
-             d:DesignHeight="700" d:DesignWidth="1080" Foreground="Black">
->>>>>>> master:ModelosInventario/MQSimple.xaml
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
