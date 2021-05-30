@@ -6,8 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoDeProduccion"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="900">
-    <Grid ShowGridLines="True">
+             d:DesignHeight="700" d:DesignWidth="1080" Background="LightGray" >
+    <Grid ShowGridLines="True" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
@@ -15,36 +15,41 @@
 
         <Grid Grid.Column=" 0" >
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" VerticalAlignment="Top">
+            <StackPanel Grid.Row="0" Margin="0 10 0 0">
+                <Label Content="Datos:" FontSize="20"/>
+            </StackPanel>
+            
+            <Grid Grid.Row="1" VerticalAlignment="Top" Margin="0 10 0 0">
 
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.1*"/>
+                    <ColumnDefinition Width="1.2*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.9*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
-                    <Label Content="Costo del producto" Margin="0 10 0 0 "/>
-                    <Label Content="Costo de pedir" Margin="0 14 0 0"/>
-                    <Label Content="Costo de mantener" Margin="0 13 0 0"/>
-                    <Label Content="Necesidades" Margin="0 14 0 0"/>
+                <StackPanel  Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right" Margin="0 0 0 0">
+                    <Label Content="Costo del producto" Margin="0 10 0 0 " HorizontalAlignment="Right"/>
+                    <Label Content="Costo de pedir" Margin="0 16 0 0" HorizontalAlignment="Right" />
+                    <Label Content="Costo de mantener" Margin="0 16 0 0" HorizontalAlignment="Right"/>
+                    <Label Content="Necesidades" Margin="0 16 0 0"  HorizontalAlignment="Right"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                    <TextBox x:Name="txtcm" Height="30" Width="80"  Margin="0 8 0 0 "/>
-                    <TextBox x:Name="txtcp" Height="30" Width="80"   Margin="0 10 0 0"/>
-                    <TextBox x:Name="txtcma" Height="30" Width="80"   Margin="0 10 0 0"/>
-                    <TextBox x:Name="txtnn" Height="30" Width="80"   Margin="0 10 0 0"/>
+                    <TextBox x:Name="txtcm" Height="30" Width="80"  Margin="0 8 0 0 " KeyDown="txtcm_KeyDown"/>
+                    <TextBox x:Name="txtcp" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtcp_KeyDown"/>
+                    <TextBox x:Name="txtcma" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtcma_KeyDown"/>
+                    <TextBox x:Name="txtnn" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtnn_KeyDown"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <ComboBox x:Name="cmbCMant" Margin="0 0 0 10" SelectedIndex="0" Height="25">
+                    <ComboBox x:Name="cmbCMant" Margin="0 0 0 10" SelectedIndex="0" Height="25" Foreground="CornflowerBlue" FontWeight="Bold">
                         <ComboBoxItem x:Name="itemAnual" Content="Anual"/>
                         <ComboBoxItem x:Name="itemMensual" Content="Mensual"/>
                         <ComboBoxItem x:Name="itemSem" Content="Semanal"/>
@@ -56,7 +61,7 @@
 
 
 
-            <Grid Grid.Row="1" >
+            <Grid Grid.Row="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
@@ -79,13 +84,74 @@
 
             </Grid>
 
-            <StackPanel Grid.Row="2">
+            <StackPanel Grid.Row="3">
                 <Button x:Name="btnCalcular" Content="Calcular" Click="btnCalcular_Click"/>
             </StackPanel>
         </Grid>
 
-        <StackPanel  Grid.Column="1" x:Name="stkpTablas" Orientation="Vertical" VerticalAlignment="Top">
-
+        <ScrollViewer Grid.Column="1">
+        <StackPanel  Grid.Column="1" x:Name="stkpTablas" Orientation="Vertical" VerticalAlignment="Top" >
+                <Label Content="L4L" FontSize="22 " x:Name="lblL4L" Visibility="Hidden" HorizontalAlignment="Center" Margin="5"/>
+                <DataGrid x:Name="l4l" Grid.Column="0" Visibility="Hidden" ItemsSource="{Binding}"  Height="240" Width="600" AutoGenerateColumns="False"
+                          Background="#FFB4B7CA" RowHeight="35"  CanUserReorderColumns="False" CanUserSortColumns="False"
+                          GridLinesVisibility="Horizontal" CanUserResizeColumns="False" Margin=" 5 0 5 0" IsReadOnly="True" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Semana" Binding="{Binding Semana}" Foreground="Black" Width="80" />
+                        <DataGridTextColumn Header="Necesidades" Binding="{Binding Necesidades}" Foreground="Black" Width="10" />
+                        <DataGridTextColumn Header="ProduccionRequerida" Binding="{Binding ProduccionRequerida}" Width="160" />
+                        <DataGridTextColumn Header="Inventario Final" Binding="{Binding InventarioFinal}" Width="125" />
+                        <DataGridTextColumn Header="Costo Mantener" Binding="{Binding CostoMantener}" Width="130" />
+                        <DataGridTextColumn Header="Costo Pedir" Binding="{Binding CostoPedir}" Width="100" />
+                        <DataGridTextColumn Header="Costo Total " Binding="{Binding CostoTotal }" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="EOQ" FontSize="22 " x:Name="lblEOQ" Visibility="Hidden" HorizontalAlignment="Center" Margin="5"/>
+                <DataGrid x:Name="EOQ" Visibility="Hidden" Grid.Column="0" ItemsSource="{Binding}" Height="240" Width="600" AutoGenerateColumns="False"
+                          Background="#FFB4B7CA" RowHeight="35"  CanUserReorderColumns="False" CanUserSortColumns="False"
+                          GridLinesVisibility="Horizontal" CanUserResizeColumns="False" Margin=" 5 0 5 0" IsReadOnly="True" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Semana" Binding="{Binding Semana}" Foreground="Black" Width="80" />
+                        <DataGridTextColumn Header="Necesidades" Binding="{Binding Necesidades}" Foreground="Black" Width="10" />
+                        <DataGridTextColumn Header="ProduccionRequerida" Binding="{Binding ProduccionRequerida}" Width="160" />
+                        <DataGridTextColumn Header="Inventario Final" Binding="{Binding InventarioFinal}" Width="125" />
+                        <DataGridTextColumn Header="Costo Mantener" Binding="{Binding CostoMantener}" Width="130" />
+                        <DataGridTextColumn Header="Costo Pedir" Binding="{Binding CostoPedir}" Width="100" />
+                        <DataGridTextColumn Header="Costo Total " Binding="{Binding CostoTotal }" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="LTC" FontSize="22 " x:Name="lclLTC" Visibility="Hidden" HorizontalAlignment="Center" Margin="5"/>
+            <DataGrid x:Name="LTC" Visibility="Hidden" Grid.Column="0" ItemsSource="{Binding}" Height="240" Width="600" AutoGenerateColumns="False"
+                          Background="#FFB4B7CA" RowHeight="35"  CanUserReorderColumns="False" CanUserSortColumns="False"
+                          GridLinesVisibility="Horizontal" CanUserResizeColumns="False" Margin=" 5 0 5 0" IsReadOnly="True" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Semana" Binding="{Binding Semana}" Foreground="Black" Width="80" />
+                        <DataGridTextColumn Header="Necesidades" Binding="{Binding Necesidades}" Foreground="Black" Width="10" />
+                        <DataGridTextColumn Header="ProduccionRequerida" Binding="{Binding ProduccionRequerida}" Width="160" />
+                        <DataGridTextColumn Header="Inventario Final" Binding="{Binding InventarioFinal}" Width="125" />
+                        <DataGridTextColumn Header="Costo Mantener" Binding="{Binding CostoMantener}" Width="130" />
+                        <DataGridTextColumn Header="Costo Pedir" Binding="{Binding CostoPedir}" Width="100" />
+                        <DataGridTextColumn Header="Costo Total " Binding="{Binding CostoTotal }" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="LUC" FontSize="22 " x:Name="lblLUC" Visibility="Hidden" HorizontalAlignment="Center" Margin="5"/>
+                <DataGrid x:Name="LUC" Grid.Column="0" Visibility="Hidden" ItemsSource="{Binding}" Height="240" Width="600" AutoGenerateColumns="False"
+                          Background="#FFB4B7CA" RowHeight="35"  CanUserReorderColumns="False" CanUserSortColumns="False"
+                          GridLinesVisibility="Horizontal" CanUserResizeColumns="False" Margin=" 5 0 5 0" IsReadOnly="True" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Semana" Binding="{Binding Semana}" Foreground="Black" Width="80" />
+                        <DataGridTextColumn Header="Necesidades" Binding="{Binding Necesidades}" Foreground="Black" Width="10" />
+                        <DataGridTextColumn Header="ProduccionRequerida" Binding="{Binding ProduccionRequerida}" Width="160" />
+                        <DataGridTextColumn Header="Inventario Final" Binding="{Binding InventarioFinal}" Width="125" />
+                        <DataGridTextColumn Header="Costo Mantener" Binding="{Binding CostoMantener}" Width="130" />
+                        <DataGridTextColumn Header="Costo Pedir" Binding="{Binding CostoPedir}" Width="100" />
+                        <DataGridTextColumn Header="Costo Total " Binding="{Binding CostoTotal }" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>
