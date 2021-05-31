@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="LoDeProduccion.MRP.items.ItemComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoDeProduccion.MRP.items"
+             mc:Ignorable="d" Height="auto" Width="auto">
+    <Grid x:Name="container" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Nombre" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"  Grid.Row="0" Name="nameLb"/>
+        <Label Content="(1)" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Grid.Row="1" Name="quantityLb"/>
+        
+
+    </Grid>
+</UserControl>
