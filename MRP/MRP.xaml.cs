@@ -21,8 +21,11 @@ namespace LoDeProduccion.MRP
     /// </summary>
     public partial class MRP : UserControl
     {
+        private items.ProductionProgram program;
+
         public MRP()
         {
+            program = new items.ProductionProgram();
             InitializeComponent();
         }
 
@@ -44,8 +47,11 @@ namespace LoDeProduccion.MRP
             if (itemSelected != null)
             {
                 var treeViewItemSelected = (TreeViewItem) itemSelected;
-                var itemNode = createItemNode(name, quantity, duration);
+                var parentItemComponent = (ItemComponent)treeViewItemSelected.Header;
+                var parentProductItem = parentItemComponent.pItem;
+                var itemNode = createItemNode(name, quantity, duration, parentProductItem);
                 int test = Arbol.Items.IndexOf(treeViewItemSelected);
+
                 if (test != -1)
                 {
                     var background = Brushes.Gray.Clone();
@@ -56,7 +62,7 @@ namespace LoDeProduccion.MRP
             } else {
                 if (mainItem)
                 {
-                    Arbol.Items.Add(createItemNode(name, quantity, duration));
+                    Arbol.Items.Add(createItemNode(name, quantity, duration, null));
                 } else
                 {
                     MessageBox.Show("Usted no ha selecionado un item padre :V", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -66,22 +72,20 @@ namespace LoDeProduccion.MRP
 
         private void Finalizar_Click(object sender, RoutedEventArgs e)
         {
-            if (Arbol.Items.Count == 0)
-            {
-                string nombre = IngNombreProducto.Text;
-                string tiempo = IngTiempoEsperaProducto.Text;
-                int numero = Int32.Parse(IngNumeroComponentes.Text);
-                MenuItem temp = new MenuItem(nombre, tiempo, numero);
-                TreeViewItem test = new TreeViewItem();
-                Arbol.Items.Add(temp);
-
-            }
-            Arbol.Visibility = Visibility.Visible;
+            container.Children.Clear();
+            ProductionProgram productionProgramUI = new ProductionProgram(program);
+            container.Children.Add(productionProgramUI);
         }
 
-        private TreeViewItem createItemNode(string name, int quantity, int duration)
-        {
-            ItemComponent component = new ItemComponent(name, quantity, duration);
+        private TreeViewItem createItemNode(
+            string name,
+            int quantity,
+            int duration,
+            ProductItem parent
+        ){
+            var productItem = new ProductItem(name, quantity, duration);
+            program.addProductItem(productItem, parent);
+            ItemComponent component = new ItemComponent(productItem);
             TreeViewItem treeItem = new TreeViewItem();
             treeItem.Header = component;
             return treeItem;

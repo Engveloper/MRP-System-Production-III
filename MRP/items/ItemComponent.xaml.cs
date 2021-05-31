@@ -20,16 +20,19 @@ namespace LoDeProduccion.MRP.items
     /// </summary>
     public partial class ItemComponent : UserControl
     {
+        public ProductItem pItem { get; }
         public ItemComponent(string name, int quantity, int duration)
         {
             InitializeComponent();
             this.nameLb.Content = $"{name} ({quantity} unds.)";
             this.quantityLb.Content = $"{duration} dias";
+            pItem = new ProductItem(name, quantity, duration);
         }
         
         public ItemComponent(ProductItem pItem)
         {
             InitializeComponent();
+            this.pItem = pItem;
             this.nameLb.Content = $"{pItem.Name} ({pItem.Quantity} unds.)";
             this.quantityLb.Content = $"{pItem.Duration} dias";
         }

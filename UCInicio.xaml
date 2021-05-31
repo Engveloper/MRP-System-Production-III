@@ -7,6 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White" Foreground="Black">
     <Grid>
-        <TextBlock Text="Inicio"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Universidad Nacional de Ingenieria" Grid.Row="0" TextAlignment="Center" FontSize="30" Foreground="Blue" Margin="10"/>
+        <Image HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Width="150" Grid.Row="1" Source="/Resources/uni.png"/>
+        <TextBlock Text="Proyecto de Producción III" Grid.Row="2" TextAlignment="Center" FontSize="20" Margin="10"/>
+        <TextBlock Text="Integrantes" Grid.Row="3" TextAlignment="Center" FontSize="20" Margin="10"/>
+        <ListView Grid.Row="4" HorizontalAlignment="Center">
+            <ListViewItem Padding="0">
+                <TextBlock Text="Alejandra Rachel Chávez Solano (2018-1084U)" TextAlignment="Center" FontSize="15" Margin="10"/>
+            </ListViewItem>
+            <ListViewItem Padding="0">
+                <TextBlock Text="Moisés Alfredo Garmendia Pérez (2018-0981U)" TextAlignment="Center" FontSize="15" Margin="10"/>
+            </ListViewItem>
+            <ListViewItem Padding="0">
+                <TextBlock Text="Lenox Wiltshire (2018-0000U)" TextAlignment="Center" FontSize="15" Margin="10"/>
+            </ListViewItem>
+            <ListViewItem Padding="0">
+                <TextBlock Text="Engels David Baca Sevilla (2017-0383U)" TextAlignment="Center" FontSize="15" Margin="10"/>
+            </ListViewItem>
+        </ListView>
     </Grid>
 </UserControl>
