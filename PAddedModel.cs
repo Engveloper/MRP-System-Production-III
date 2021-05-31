@@ -8,6 +8,8 @@ namespace LoDeProduccion
 {
     public class PAddedModel
     {
+        public PAddedModel() { }
+
         public int Demanda { get; set; }
         public int DiasHabiles { get; set; }
         public double MateriaPrima { get; set; }
