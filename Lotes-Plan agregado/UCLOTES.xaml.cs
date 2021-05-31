@@ -161,6 +161,13 @@ namespace LoDeProduccion
             int Inv = 0;
             decimal Cman = 0;
             decimal Cped = 0;
+            int invI = 0;
+            //int IIT = 0;
+
+            if (!txtii.Text.Equals(""))
+            {
+                invI = Convert.ToInt32(txtii.Text);
+            }
             foreach (NECESIDADES det in dgNecesidades.Items)
             {
                 int neces = det.Necesidades;
@@ -168,7 +175,7 @@ namespace LoDeProduccion
                 if (i == 0)
                 {
                     prod = QO;
-                    Inv = QO - neces;
+                    Inv = invI + QO - neces;
                     Cped = S;
                 }
                 else
@@ -188,7 +195,15 @@ namespace LoDeProduccion
                 }
 
                 ///Ojo
+                ///
+                if (Inv < 0)
+                {
+                    Cman = 0;
+                }
+                else { 
                 Cman = Math.Round(Inv * (H / 52), 2);
+                }
+
                 ct = ct + Cman + Cped;
                 i++;
 
@@ -196,6 +211,7 @@ namespace LoDeProduccion
                 {
                     Semana = det.Id,
                     Necesidades = neces,
+                    InventarioInicial = invI,
                     ProduccionRequerida = prod,
                     InventarioFinal = Inv,
                     CostoMantener = Cman,
@@ -203,6 +219,7 @@ namespace LoDeProduccion
                     CostoTotal = ct
                 };
 
+                invI = Inv;
                 material.Add(cot);
             }
 
@@ -449,12 +466,18 @@ namespace LoDeProduccion
         {
             soloNumeros(e);
         }
+
+        private void txtii_KeyDown(object sender, KeyEventArgs e)
+        {
+            soloNumeros(e);
+        }
     }
 
     public class CT
     {
         public int Semana { get; set; }
         public int Necesidades { get; set; }
+        public int InventarioInicial { get; set; }
         public int ProduccionRequerida { get; set; }
         public int InventarioFinal { get; set; }
         public Decimal CostoMantener { get; set; }
