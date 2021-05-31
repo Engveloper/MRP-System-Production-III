@@ -42,6 +42,7 @@ namespace LoDeProduccion
             {
                 temp.TrabajadoresActuales = planList.ElementAt(index-1).TrabajadoresRequeridos;
             }
+            planList.Add(temp);
             index++;
         }
 
