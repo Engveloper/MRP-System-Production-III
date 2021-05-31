@@ -48,13 +48,7 @@
 
         <StackPanel Grid.Row="5" Name="container" CanVerticallyScroll="True" Height="auto">
             <!--Treeview-->
-            <TreeView x:Name="Arbol" Visibility="Visible">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Elementos}">
-                        <TextBlock Text="{Binding Nombre}"/>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <TreeView x:Name="Arbol" Visibility="Visible"></TreeView>
         </StackPanel>
 
     </Grid>
