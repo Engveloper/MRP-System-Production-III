@@ -11,6 +11,9 @@ namespace LoDeProduccion.MRP.items
         public string Name { get; set; }
         public int Quantity { get; set; }
         public int Duration { get; set; }
+        public int SecurityStock { get; set; }
+        public int Stock { get; set; }
+        public int PendingOrder { get; set; }
         public ProductItem ParentItem { get; set; }
 
         public bool isMainItem()

@@ -27,8 +27,6 @@
         </StackPanel>
         <!--Numero de componentes-->
         <StackPanel Grid.Row="2">
-
-
             <TextBlock x:Name="NumeroComponentes" Text="Ingrese el numero de componentes del producto"/>
             <TextBox x:Name="IngNumeroComponentes" Width="200" HorizontalAlignment="Left"/>
         </StackPanel>
@@ -48,14 +46,16 @@
             <Button Content="Finalizar" x:Name="Finalizar" Click="Finalizar_Click" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <!--Treeview-->
-        <TreeView x:Name="Arbol" Visibility="Visible" Grid.Row="5">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Elementos}">
-                    <TextBlock Text="{Binding Nombre}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+        <StackPanel Grid.Row="5" Name="container" CanVerticallyScroll="True" Height="auto">
+            <!--Treeview-->
+            <TreeView x:Name="Arbol" Visibility="Visible">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Elementos}">
+                        <TextBlock Text="{Binding Nombre}"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </StackPanel>
 
     </Grid>
 </UserControl>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoDeProduccion.MRP.items
 {
-    class ProductionProgram
+    public class ProductionProgram
     {
         public ProductItem MainProductItem { get; set; }
 
