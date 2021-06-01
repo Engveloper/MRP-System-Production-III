@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LoDeProduccion
 {
     public class EstrategiaPersecucion
     {
-        private readonly PAddedModel _pAddedModel;
+        public PAddedModel _pAddedModel { get; set; }
+        private int _demanda;
 
-        public EstrategiaPersecucion(PAddedModel pAddedModel)
+        public EstrategiaPersecucion(PAddedModel pAddedModel, int demanda)
         {
             _pAddedModel = pAddedModel;
+            _demanda = demanda;
         }
 
         public double HorasRequeridas { 
             get 
             {
-                var unidades = _pAddedModel.Demanda + _pAddedModel.InventarioDeSeguridad - _pAddedModel.InventarioInicial;
+                var unidades = _demanda + _pAddedModel.InventarioDeSeguridad - _pAddedModel.InventarioInicial;
                 return unidades * _pAddedModel.HorasRequeridaParaUnidad;
             } 
         }

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoDeProduccion
+﻿namespace LoDeProduccion
 {
     public class PAddedModel
     {
         public PAddedModel() { }
 
-        public int Demanda { get; set; }
         public int DiasHabiles { get; set; }
         public double MateriaPrima { get; set; }
         public double H { get; set; }//Costo mantenimiento unitario / * mensual/trimestral/etc... * 

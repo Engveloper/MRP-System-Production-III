@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,46 +9,41 @@ namespace LoDeProduccion
     /// </summary>
     public partial class PlanAgregado : UserControl
     {
-        private List<PlanAgregadoModel> planList = new List<PlanAgregadoModel>();
-        private int index = 0;
+        public PAddedModel pamodel;
+        public ObservableCollection<PAddedVariance> demandasDias;
         public PlanAgregado()
         {
             InitializeComponent();
+            demandasDias = new ObservableCollection<PAddedVariance>();
+            dgDemandasDias.ItemsSource = demandasDias;
         }
 
         private void AgregarMes_Click(object sender, RoutedEventArgs e)
         {
-            PlanAgregadoModel temp = new PlanAgregadoModel();
-            temp.MateriaPrima = float.Parse(ingMateriaPrima.Text);
-            temp.CostoFijo = float.Parse(ingCostoFijo.Text);
-            temp.Mantener = float.Parse(ingMantener.Text);
-            temp.Contratar = float.Parse(ingContratar.Text);
-            temp.Despido = float.Parse(ingDespido.Text);
-            temp.HoraNormal = float.Parse(ingHoraNormal.Text);
-            temp.HoraExtra = float.Parse(ingHoraExtra.Text);
-
-            temp.Mes = index;
-            temp.DiasLaborales = int.Parse(ingDiasLaborales.Text);
-            temp.HorasLaborales = int.Parse(ingHorasJornada.Text);
-            temp.ProduccionTrabajador = int.Parse(ingProduccionTrabajador.Text);
-            temp.Demanda = int.Parse(ingDemanda.Text);
-
-            if (index == 0)
+            pamodel = new() 
             {
-                temp.TrabajadoresActuales = int.Parse(ingFuerzaLaboralInicial.Text); 
-            }
-            else
-            {
-                temp.TrabajadoresActuales = planList.ElementAt(index-1).TrabajadoresRequeridos;
-            }
-            planList.Add(temp);
-            index++;
+                DiasHabiles = int.Parse(ingDiasLaborales.Text),
+                MateriaPrima = double.Parse(ingMateriaPrima.Text),
+                H = double.Parse(txtH.Text),
+                CostoDeFaltante = double.Parse(txtCostoDeFaltante.Text),
+                Outsourcing = 0,
+                CostoCapacitar = double.Parse(ingContratar.Text),
+                CostoDespedir = double.Parse(ingDespido.Text),
+                HoraExtra = double.Parse(ingHoraExtra.Text),
+                InventarioInicial = int.Parse(ingInventarioInicial.Text),
+                InventarioDeSeguridad = int.Parse(txtInventarioDeSeguridad.Text),
+                FuerzaLaboralInicial = int.Parse(ingFuerzaLaboralInicial.Text),
+                HorasRequeridaParaUnidad = double.Parse(txtHorasParaUnidad.Text)
+            };
+
+            PlanAgregadoTablas tablas = new(pamodel, demandasDias);
+            tablas.Show();
         }
 
-        private void Finalizar_Click(object sender, RoutedEventArgs e)
+
+        private void btnAgregarFila_Click(object sender, RoutedEventArgs e)
         {
-            TablaPlan.ItemsSource = planList;
-            TablaPlan.Visibility = Visibility.Visible;
+            demandasDias.Add(new PAddedVariance());
         }
     }
 }

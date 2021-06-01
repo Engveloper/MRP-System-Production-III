@@ -10,11 +10,13 @@ namespace LoDeProduccion
     {
         private readonly PAddedModel _pAddedModel;
         private readonly int _demandaPromedio;
+        private int _demanda;
 
-        public FuerzaLaboralNivelada(int demandaPromedio, PAddedModel pAddedModel)
+        public FuerzaLaboralNivelada(int demandaPromedio, int demanda, PAddedModel pAddedModel)
         {
             _pAddedModel = pAddedModel;
             _demandaPromedio = demandaPromedio;
+            _demanda = demanda;
         }
 
         public double HorasDisponiblesPorTrabajador
@@ -51,7 +53,7 @@ namespace LoDeProduccion
             }
         }
 
-        public int Demanda { get { return _pAddedModel.Demanda; } }
+        public int Demanda { get { return _demanda; } }
 
         public int InventarioInicial { get { return _pAddedModel.InventarioInicial; } }
 

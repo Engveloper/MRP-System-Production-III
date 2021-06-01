@@ -1,0 +1,32 @@
+﻿<Window x:Class="LoDeProduccion.PlanAgregadoTablas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoDeProduccion"
+        mc:Ignorable="d"
+        Title="PlanAgregadoTablas" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="ESTRATEGIA DE PERSECUCIÓN" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+        <DataGrid x:Name="dgPersecucion" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding}" AutoGenerateColumns="True" IsManipulationEnabled="False"/>
+        
+        <TextBlock Text="FUERZA LABORAL NIVELADA" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+        <DataGrid x:Name="dgNivelada" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding}" AutoGenerateColumns="True" IsManipulationEnabled="False"/>
+    </Grid>
+</Window>
