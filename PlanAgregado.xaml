@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White" Foreground="black">
     <Grid>
-        
+
         <!--Instancia del grid-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -15,7 +15,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -31,9 +31,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <!--Titulo-->
-        <TextBlock Text="Plan Agregado"/>
+        <TextBlock Text="Plan Agregado" FontSize="20" Grid.ColumnSpan="5" HorizontalAlignment="Center" FontWeight="Bold"/>
 
         <!--Costos-->
         <TextBlock Text="Costos" Grid.Row="1" Grid.Column="0" VerticalAlignment="center"/>
@@ -44,42 +44,48 @@
         <TextBlock Text="Despido" Grid.Row="6" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Hora normal" Grid.Row="7" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Hora extra" Grid.Row="8" Grid.Column="0" VerticalAlignment="center"/>
+        <TextBlock Text="Costo de mantenimiento" Grid.Row="9" Grid.Column="0" VerticalAlignment="center"/>
 
         <!--Costos-->
         <TextBox x:Name="ingMateriaPrima" Grid.Row="2" Grid.Column="1" VerticalAlignment="center"/>
-        <TextBox x:Name="ingCostoFijo" Grid.Row="3" Grid.Column="1" VerticalAlignment="center"/>
-        <TextBox x:Name="ingMantener" Grid.Row="4" Grid.Column="1" VerticalAlignment="center"/>
+        <!--<TextBox x:Name="ingCostoFijo" Grid.Row="3" Grid.Column="1" VerticalAlignment="center"/>
+        <TextBox x:Name="ingMantener" Grid.Row="4" Grid.Column="1" VerticalAlignment="center"/> -->
         <TextBox x:Name="ingContratar" Grid.Row="5" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingDespido" Grid.Row="6" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingHoraNormal" Grid.Row="7" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingHoraExtra" Grid.Row="8" Grid.Column="1" VerticalAlignment="center"/>
+        <TextBox x:Name="txtH" Grid.Row="9" Grid.Column="1" VerticalAlignment="center"/>
 
         <!--Tiempo de fabricacion-->
-        <TextBlock Text="Tiempo de fabricacion" Grid.Row="1" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Mes" Grid.Row="2" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Dias laborales" Grid.Row="3" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Horas de jornada laboral" Grid.Row="4" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Produccion por trabajador" Grid.Row="5" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Demanda" Grid.Row="6" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Inventario inicial" Grid.Row="7" Grid.Column="2" VerticalAlignment="center"/>
-        <TextBlock Text="Fuerza laboral inicial" Grid.Row="8" Grid.Column="2" VerticalAlignment="center"/>
+        <TextBlock Text="Costo de faltante" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
         
-        <!--Tiempo de fabricacion-->
-        <TextBox x:Name="ingDiasLaborales" Grid.Row="3" Grid.Column="3" VerticalAlignment="center"/>
-        <TextBox x:Name="ingHorasJornada" Grid.Row="4" Grid.Column="3" VerticalAlignment="center"/>
-        <TextBox x:Name="ingProduccionTrabajador" Grid.Row="5" Grid.Column="3" VerticalAlignment="center"/>
-        <TextBox x:Name="ingDemanda" Grid.Row="6" Grid.Column="3" VerticalAlignment="center"/>
-        <TextBox x:Name="ingInventarioInicial" Grid.Row="7" Grid.Column="3" VerticalAlignment="center"/>
-        <TextBox x:Name="ingFuerzaLaboralInicial" Grid.Row="8" Grid.Column="3" VerticalAlignment="center"/>
+        <TextBlock Text="Horas de jornada laboral" Grid.Row="4" Grid.Column="2" VerticalAlignment="center"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" VerticalAlignment="center"><Run Language="es-es" Text="Horas requeridas para/u"/></TextBlock>
+        
+        <TextBlock Text="Fuerza laboral inicial" Grid.Row="6" Grid.Column="2" VerticalAlignment="Top" Margin="0,17,0,0"/>
+        <TextBlock Text="Inventario inicial" Grid.Row="7" Grid.Column="2" VerticalAlignment="center"/>
+        <CheckBox x:Name="chkSS" Content="Porcentage con demanda" Grid.Column="2" Grid.Row="8" Checked="chkSS_Checked" Unchecked="chkSS_Unchecked" />
+        <TextBlock Text="Inventario de seguridad" Grid.Row="9" Grid.Column="2" VerticalAlignment="Center"/>
 
-        <!--Costos Totales-->
-        <DataGrid x:Name="TablaPlan" Visibility="Collapsed" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"/>
+        <!--Tiempo de fabricacion-->
+        <TextBox x:Name="txtCostoDeFaltante" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"/>
+        
+        <TextBox x:Name="ingHorasJornada" Grid.Row="4" Grid.Column="3" VerticalAlignment="center"/>
+        <TextBox x:Name="txtHorasParaUnidad" Grid.Row="5" Grid.Column="3" VerticalAlignment="center"/>
+        
+        <TextBox x:Name="ingFuerzaLaboralInicial" Grid.Row="6" Grid.Column="3" VerticalAlignment="center"/>
+        <TextBox x:Name="ingInventarioInicial" Grid.Row="7" Grid.Column="3" VerticalAlignment="center"/>
+        <TextBox x:Name="txtSSPercentage" Grid.Row="8" Grid.Column="3" VerticalAlignment="center"/>
+        
+        <TextBox x:Name="txtInventarioDeSeguridad" Grid.Row="9" Grid.Column="3" VerticalAlignment="center"/>
 
         <!--Agregar-->
-        <Button x:Name="AgregarMes" Content="Agregar" Grid.Row="9" Grid.Column="2" Click="AgregarMes_Click"/>
-        
+        <Button x:Name="AgregarMes" Content="Calcular" Grid.Row="10" Grid.Column="2" Click="AgregarMes_Click"/>
+
         <!--Finalizar-->
-        <Button x:Name="Finalizar" Content="Finalizar" Grid.Row="9" Grid.Column="0" Click="Finalizar_Click"/>
+
+        <DataGrid x:Name="dgDemandasDias" Grid.Row="1" Grid.Column="4" Grid.RowSpan="8" ItemsSource="{Binding}"/>
+        <Button x:Name="btnAgregarFila" Grid.Row="9" Grid.Column="4" Content="Agregar fila" Click="btnAgregarFila_Click"/>
 
     </Grid>
 </UserControl>

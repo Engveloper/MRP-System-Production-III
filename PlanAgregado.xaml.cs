@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,45 +9,61 @@ namespace LoDeProduccion
     /// </summary>
     public partial class PlanAgregado : UserControl
     {
-        private List<PlanAgregadoModel> planList = new List<PlanAgregadoModel>();
-        private int index = 0;
+        public PAddedModel pamodel;
+        public ObservableCollection<PAddedVariance> demandasDias;
+        public bool boolss { get; set; }
         public PlanAgregado()
         {
             InitializeComponent();
+            demandasDias = new ObservableCollection<PAddedVariance>();
+            dgDemandasDias.ItemsSource = demandasDias;
         }
 
         private void AgregarMes_Click(object sender, RoutedEventArgs e)
         {
-            PlanAgregadoModel temp = new PlanAgregadoModel();
-            temp.MateriaPrima = float.Parse(ingMateriaPrima.Text);
-            temp.CostoFijo = float.Parse(ingCostoFijo.Text);
-            temp.Mantener = float.Parse(ingMantener.Text);
-            temp.Contratar = float.Parse(ingContratar.Text);
-            temp.Despido = float.Parse(ingDespido.Text);
-            temp.HoraNormal = float.Parse(ingHoraNormal.Text);
-            temp.HoraExtra = float.Parse(ingHoraExtra.Text);
-
-            temp.Mes = index;
-            temp.DiasLaborales = int.Parse(ingDiasLaborales.Text);
-            temp.HorasLaborales = int.Parse(ingHorasJornada.Text);
-            temp.ProduccionTrabajador = int.Parse(ingProduccionTrabajador.Text);
-            temp.Demanda = int.Parse(ingDemanda.Text);
-
-            if (index == 0)
+            pamodel = new();
+            pamodel.MateriaPrima = double.Parse(ingMateriaPrima.Text);
+            pamodel.H = double.Parse(txtH.Text);
+            pamodel.CostoDeFaltante = double.Parse(txtCostoDeFaltante.Text);
+            pamodel.Outsourcing = 0;
+            pamodel.CostoCapacitar = double.Parse(ingContratar.Text);
+            pamodel.CostoDespedir = double.Parse(ingDespido.Text);
+            pamodel.HoraExtra = double.Parse(ingHoraExtra.Text);
+            pamodel.InventarioInicial = int.Parse(ingInventarioInicial.Text);
+            if (txtInventarioDeSeguridad.Text == string.Empty)
             {
-                temp.TrabajadoresActuales = int.Parse(ingFuerzaLaboralInicial.Text); 
+                pamodel.InventarioDeSeguridad = 0;
             }
-            else
-            {
-                temp.TrabajadoresActuales = planList.ElementAt(index-1).TrabajadoresRequeridos;
-            }
-            index++;
+            else pamodel.InventarioDeSeguridad = int.Parse(txtInventarioDeSeguridad.Text);
+            pamodel.FuerzaLaboralInicial = int.Parse(ingFuerzaLaboralInicial.Text);
+            pamodel.HorasRequeridaParaUnidad = double.Parse(txtHorasParaUnidad.Text);
+            pamodel.HorasPorDia = double.Parse(ingHorasJornada.Text);
+            pamodel.HoraNormal = double.Parse(ingHoraNormal.Text);
+            
+
+            double? percentage = null;
+            if(boolss)percentage = double.Parse(txtSSPercentage.Text);
+
+            PlanAgregadoTablas tablas = new(pamodel, demandasDias, percentage);
+            tablas.Show();
         }
 
-        private void Finalizar_Click(object sender, RoutedEventArgs e)
+
+        private void btnAgregarFila_Click(object sender, RoutedEventArgs e)
         {
-            TablaPlan.ItemsSource = planList;
-            TablaPlan.Visibility = Visibility.Visible;
+            demandasDias.Add(new PAddedVariance());
+        }
+
+        private void chkSS_Checked(object sender, RoutedEventArgs e)
+        {
+            boolss = true;
+            txtInventarioDeSeguridad.IsEnabled = false;
+        }
+
+        private void chkSS_Unchecked(object sender, RoutedEventArgs e)
+        {
+            boolss = true;
+            txtInventarioDeSeguridad.IsEnabled = true;
         }
     }
 }
