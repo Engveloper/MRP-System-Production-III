@@ -116,24 +116,29 @@ namespace LoDeProduccion
         private decimal CalcularCostoMantenerAnual()
         {
             decimal c = 0;
-            c = Convert.ToDecimal(txtCostoMan.Text);
-            
 
-            switch (cmbCMant.SelectedIndex)
+            if (!txtCostoMan.Text.Equals(""))
             {
-                case 0:
-                    break;
+                c = Convert.ToDecimal(txtCostoMan.Text);
 
-                case 1:
-                    c = c * 12;
-                    break;
 
-                case 2:
-                    c = c * 52;
-                    break;
+                switch (cmbCMant.SelectedIndex)
+                {
+                    case 0:
+                        break;
 
-                
+                    case 1:
+                        c = c * 12;
+                        break;
+
+                    case 2:
+                        c = c * 52;
+                        break;
+
+
+                }
             }
+           
             return c;
         }
 
