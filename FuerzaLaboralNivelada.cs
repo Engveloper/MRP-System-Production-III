@@ -11,19 +11,21 @@ namespace LoDeProduccion
         private readonly PAddedModel _pAddedModel;
         private readonly int _demandaPromedio;
         private int _demanda;
+        private int _dias;
 
-        public FuerzaLaboralNivelada(int demandaPromedio, int demanda, PAddedModel pAddedModel)
+        public FuerzaLaboralNivelada(int demandaPromedio, PAddedVariance variance, PAddedModel pAddedModel)
         {
             _pAddedModel = pAddedModel;
             _demandaPromedio = demandaPromedio;
-            _demanda = demanda;
+            _demanda = variance.demanda;
+            _dias = variance.dias;
         }
 
         public double HorasDisponiblesPorTrabajador
         {
             get
             {
-                var horasMensualxTrabajador = _pAddedModel.DiasHabiles * _pAddedModel.HorasPorDia;
+                var horasMensualxTrabajador = _dias * _pAddedModel.HorasPorDia;
                 return horasMensualxTrabajador;
             }
         }

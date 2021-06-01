@@ -11,6 +11,7 @@ namespace LoDeProduccion
     {
         public PAddedModel pamodel;
         public ObservableCollection<PAddedVariance> demandasDias;
+        public bool boolss { get; set; }
         public PlanAgregado()
         {
             InitializeComponent();
@@ -20,23 +21,30 @@ namespace LoDeProduccion
 
         private void AgregarMes_Click(object sender, RoutedEventArgs e)
         {
-            pamodel = new() 
+            pamodel = new();
+            pamodel.MateriaPrima = double.Parse(ingMateriaPrima.Text);
+            pamodel.H = double.Parse(txtH.Text);
+            pamodel.CostoDeFaltante = double.Parse(txtCostoDeFaltante.Text);
+            pamodel.Outsourcing = 0;
+            pamodel.CostoCapacitar = double.Parse(ingContratar.Text);
+            pamodel.CostoDespedir = double.Parse(ingDespido.Text);
+            pamodel.HoraExtra = double.Parse(ingHoraExtra.Text);
+            pamodel.InventarioInicial = int.Parse(ingInventarioInicial.Text);
+            if (txtInventarioDeSeguridad.Text == string.Empty)
             {
-                DiasHabiles = int.Parse(ingDiasLaborales.Text),
-                MateriaPrima = double.Parse(ingMateriaPrima.Text),
-                H = double.Parse(txtH.Text),
-                CostoDeFaltante = double.Parse(txtCostoDeFaltante.Text),
-                Outsourcing = 0,
-                CostoCapacitar = double.Parse(ingContratar.Text),
-                CostoDespedir = double.Parse(ingDespido.Text),
-                HoraExtra = double.Parse(ingHoraExtra.Text),
-                InventarioInicial = int.Parse(ingInventarioInicial.Text),
-                InventarioDeSeguridad = int.Parse(txtInventarioDeSeguridad.Text),
-                FuerzaLaboralInicial = int.Parse(ingFuerzaLaboralInicial.Text),
-                HorasRequeridaParaUnidad = double.Parse(txtHorasParaUnidad.Text)
-            };
+                pamodel.InventarioDeSeguridad = 0;
+            }
+            else pamodel.InventarioDeSeguridad = int.Parse(txtInventarioDeSeguridad.Text);
+            pamodel.FuerzaLaboralInicial = int.Parse(ingFuerzaLaboralInicial.Text);
+            pamodel.HorasRequeridaParaUnidad = double.Parse(txtHorasParaUnidad.Text);
+            pamodel.HorasPorDia = double.Parse(ingHorasJornada.Text);
+            pamodel.HoraNormal = double.Parse(ingHoraNormal.Text);
+            
 
-            PlanAgregadoTablas tablas = new(pamodel, demandasDias);
+            double? percentage = null;
+            if(boolss)percentage = double.Parse(txtSSPercentage.Text);
+
+            PlanAgregadoTablas tablas = new(pamodel, demandasDias, percentage);
             tablas.Show();
         }
 
@@ -44,6 +52,18 @@ namespace LoDeProduccion
         private void btnAgregarFila_Click(object sender, RoutedEventArgs e)
         {
             demandasDias.Add(new PAddedVariance());
+        }
+
+        private void chkSS_Checked(object sender, RoutedEventArgs e)
+        {
+            boolss = true;
+            txtInventarioDeSeguridad.IsEnabled = false;
+        }
+
+        private void chkSS_Unchecked(object sender, RoutedEventArgs e)
+        {
+            boolss = true;
+            txtInventarioDeSeguridad.IsEnabled = true;
         }
     }
 }

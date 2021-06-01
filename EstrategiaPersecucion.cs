@@ -6,11 +6,13 @@ namespace LoDeProduccion
     {
         public PAddedModel _pAddedModel { get; set; }
         private int _demanda;
+        private int _dias;
 
-        public EstrategiaPersecucion(PAddedModel pAddedModel, int demanda)
+        public EstrategiaPersecucion(PAddedModel pAddedModel, PAddedVariance variance)
         {
             _pAddedModel = pAddedModel;
-            _demanda = demanda;
+            _demanda = variance.demanda;
+            _dias = variance.dias;
         }
 
         public double HorasRequeridas { 
@@ -25,7 +27,7 @@ namespace LoDeProduccion
         {
             get
             {
-                var horasMensualxTrabajador = _pAddedModel.DiasHabiles * _pAddedModel.HorasPorDia;
+                var horasMensualxTrabajador = _dias * _pAddedModel.HorasPorDia;
                 return horasMensualxTrabajador;
             }
         }
@@ -35,7 +37,7 @@ namespace LoDeProduccion
             get
             {
                 double trabajadoresRAW = HorasRequeridas / HorasDisponiblePorTrabajador;
-                return (int)Math.Ceiling(trabajadoresRAW);
+                return Convert.ToInt32(trabajadoresRAW);
             }
         }
 
@@ -51,7 +53,6 @@ namespace LoDeProduccion
         }
 
         public double H = 0;
-        public double CostoFijo = 0;
         public double Outsourcing = 0;
 
         private int Contratados
@@ -67,7 +68,7 @@ namespace LoDeProduccion
         {
             get
             {
-                return Contratados * _pAddedModel.HoraNormal;
+                return Contratados * _pAddedModel.CostoCapacitar;
             }
         }
 
@@ -93,6 +94,14 @@ namespace LoDeProduccion
             get
             {
                 return HorasRequeridas * _pAddedModel.HoraNormal;
+            }
+        }
+
+        public double CostoFaltanteTotal
+        {
+            get
+            {
+                return 0;
             }
         }
 

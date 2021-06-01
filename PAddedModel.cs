@@ -4,7 +4,6 @@
     {
         public PAddedModel() { }
 
-        public int DiasHabiles { get; set; }
         public double MateriaPrima { get; set; }
         public double H { get; set; }//Costo mantenimiento unitario / * mensual/trimestral/etc... * 
         public double CostoDeFaltante { get; set; }
@@ -17,7 +16,7 @@
         public int InventarioDeSeguridad { get; set; }
         public int FuerzaLaboralInicial { get; set; }
         public double HorasRequeridaParaUnidad { get; set; }
-        public double HorasPorDia { get { return 8; } }
+        public double HorasPorDia { get; set; }
 
     }
 }

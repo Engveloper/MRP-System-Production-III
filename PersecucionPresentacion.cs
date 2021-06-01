@@ -9,7 +9,7 @@
             NumeroDeTrabajadoresNecesitados = ep.TrabajadoresNecesitados;
             MateriaPrima = ep.MateriaPrima;
             H = ep.H;
-            CostoFijo = ep.CostoFijo;
+            CostoFaltante = ep.CostoFaltanteTotal;
             Outsourcing = ep.Outsourcing;
             Contratados = ep.ContratadosCosto;
             Despidos = ep.DespedidosCosto;
@@ -22,7 +22,7 @@
         public int NumeroDeTrabajadoresNecesitados { get; set; }
         public double MateriaPrima { get; set; }
         public double H { get; set; }
-        public double CostoFijo { get; set; }
+        public double CostoFaltante { get; set; }
         public double Outsourcing { get; set; }
         public double Contratados { get; set; }
         public double Despidos { get; set; }
