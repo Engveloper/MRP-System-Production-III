@@ -12,6 +12,8 @@ namespace LoDeProduccion
         public MainWindow()
         {
             InitializeComponent();
+            Contenedor.Children.Add(new UCInicio());
+
         }
 
         
