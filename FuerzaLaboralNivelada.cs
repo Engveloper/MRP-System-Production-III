@@ -97,10 +97,12 @@ namespace LoDeProduccion
             {
                 if(InventarioFinal < 0)
                 {
-                    return _pAddedModel.
-   
+                    return (_demanda - InventarioFinal)*(-1)*CostoFaltante;
+                
+                }
+
+                return 0;
             }
-        }
 
        
         }
