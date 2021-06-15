@@ -6,39 +6,36 @@
              xmlns:local="clr-namespace:LoDeProduccion.MRP"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid VerticalAlignment="Top">
+    <Grid VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--Nombre del producto-->
         <StackPanel Grid.Row="0">
-        <TextBlock x:Name="NombreProducto" Text="Ingrese el nombre del producto" />
-        <TextBox x:Name="IngNombreProducto" Width="200" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="NombreProducto" Text="Ingrese el nombre del producto" />
+            <TextBox x:Name="IngNombreProducto" Width="200" HorizontalAlignment="Left"/>
         </StackPanel>
         <!--Tiempo de espera-->
         <StackPanel Grid.Row="1">
-        <TextBlock x:Name="TiempoEsperaProducto" Text="Ingrese el tiempo de espera del producto"/>
-        <TextBox x:Name="IngTiempoEsperaProducto" Width="200" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="TiempoEsperaProducto" Text="Ingrese el tiempo de espera del producto"/>
+            <TextBox x:Name="IngTiempoEsperaProducto" Width="200" HorizontalAlignment="Left"/>
         </StackPanel>
         <!--Numero de componentes-->
         <StackPanel Grid.Row="2">
-            
-        
-        <TextBlock x:Name="NumeroComponentes" Text="Ingrese el numero de componentes del producto"/>
-        <TextBox x:Name="IngNumeroComponentes" Width="200" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="NumeroComponentes" Text="Ingrese el numero de componentes del producto"/>
+            <TextBox x:Name="IngNumeroComponentes" Width="200" HorizontalAlignment="Left"/>
         </StackPanel>
         <!--Lista de componentes-->
         <StackPanel Grid.Row="3">
-        <TextBlock x:Name="ListadoText" Text="Seleccione el producto padre de este componente" Visibility="Collapsed"/>
-        <ComboBox x:Name="ListadoComponentes" HorizontalAlignment="Left" Visibility="Collapsed">
+            <TextBlock x:Name="ListadoText" Text="Seleccione el producto padre de este componente" Visibility="Collapsed"/>
+            <ComboBox x:Name="ListadoComponentes" HorizontalAlignment="Left" Visibility="Collapsed">
 
-        </ComboBox>
+            </ComboBox>
         </StackPanel>
         <!--Botones-->
         <StackPanel Orientation="Horizontal" Grid.Row="4">
@@ -49,14 +46,10 @@
             <Button Content="Finalizar" x:Name="Finalizar" Click="Finalizar_Click" HorizontalAlignment="Left"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="5" Name="container" CanVerticallyScroll="True" Height="auto">
+            <!--Treeview-->
+            <TreeView x:Name="Arbol" Visibility="Visible"></TreeView>
+        </StackPanel>
 
-        <!--Treeview-->
-        <TreeView x:Name="Arbol" Visibility="Collapsed" Grid.Row="5">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Elementos}">
-                    <TextBlock Text="{Binding Nombre}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
     </Grid>
 </UserControl>

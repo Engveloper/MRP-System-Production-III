@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+
 using System.Linq;
+
 using System.Windows;
 
 namespace LoDeProduccion
@@ -12,7 +14,9 @@ namespace LoDeProduccion
     {
 
         private ObservableCollection<PersecucionPresentacion> persecucionlist;
+
         private ObservableCollection<NiveladaPresentacion> niveladalist;
+
 
         public PlanAgregadoTablas(PAddedModel pamodel, ObservableCollection<PAddedVariance> variance, double? percentage)
         {
@@ -37,6 +41,7 @@ namespace LoDeProduccion
                     persecucionlist.Add(new PersecucionPresentacion(new EstrategiaPersecucion(pamodel, variance[i])));
                 }
             }
+
 
             /* ---------NIVELADA--------------- */
 
@@ -63,6 +68,7 @@ namespace LoDeProduccion
 
                 }
             }
+
 
         }
 

@@ -36,16 +36,19 @@
         <!--Costos-->
         <TextBlock Text="Costos" Grid.Row="1" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Materia Prima" Grid.Row="2" Grid.Column="0" VerticalAlignment="center"/>
+
         <TextBlock Text="Contratar" Grid.Row="3" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Despido" Grid.Row="4" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Hora normal" Grid.Row="5" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Hora extra" Grid.Row="6" Grid.Column="0" VerticalAlignment="center"/>
         <TextBlock Text="Costo de mantenimiento" Grid.Row="7" Grid.Column="0" VerticalAlignment="center"/>
 
+
         <!--Costos-->
         <TextBox x:Name="ingMateriaPrima" Grid.Row="2" Grid.Column="1" VerticalAlignment="center"/>
         <!--<TextBox x:Name="ingCostoFijo" Grid.Row="3" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingMantener" Grid.Row="4" Grid.Column="1" VerticalAlignment="center"/> -->
+
         <TextBox x:Name="ingContratar" Grid.Row="3" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingDespido" Grid.Row="4" Grid.Column="1" VerticalAlignment="center"/>
         <TextBox x:Name="ingHoraNormal" Grid.Row="5" Grid.Column="1" VerticalAlignment="center"/>
@@ -63,9 +66,11 @@
         <CheckBox x:Name="chkSS" Content="Porcentage con demanda" Grid.Column="2" Grid.Row="7" Checked="chkSS_Checked" Unchecked="chkSS_Unchecked" />
         <TextBlock Text="Inventario de seguridad" Grid.Row="8" Grid.Column="2" VerticalAlignment="Center"/>
 
+
         <!--Tiempo de fabricacion-->
         <TextBox x:Name="txtCostoDeFaltante" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center"/>
         
+
         <TextBox x:Name="ingHorasJornada" Grid.Row="3" Grid.Column="3" VerticalAlignment="center"/>
         <TextBox x:Name="txtHorasParaUnidad" Grid.Row="4" Grid.Column="3" VerticalAlignment="center"/>
         
@@ -77,6 +82,7 @@
 
         <!--Agregar-->
         <Button x:Name="AgregarMes" Content="Calcular" Grid.Row="9" Grid.Column="2" Click="AgregarMes_Click"/>
+
 
         <!--Finalizar-->
 

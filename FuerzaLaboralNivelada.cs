@@ -8,6 +8,7 @@ namespace LoDeProduccion
 {
     public class FuerzaLaboralNivelada
     {
+
         public PAddedModel _pAddedModel;
         private readonly double _demandaPromedio;
         private int _demanda;
@@ -39,6 +40,7 @@ namespace LoDeProduccion
             }
         }
 
+
         public int TrabajadoresRequeridos
         {
             get
@@ -64,6 +66,7 @@ namespace LoDeProduccion
             get
             {
                 return (int)(ProduccionReal + InventarioInicial - _demandaPromedio);
+
             }
         }
 
@@ -83,6 +86,7 @@ namespace LoDeProduccion
         {
             get
             {
+
                 return InventarioFinal;
             }
         }
@@ -93,10 +97,12 @@ namespace LoDeProduccion
             {
                 if(InventarioFinal < 0)
                 {
-                    return _pAddedModel.CostoDeFaltante * Math.Abs(InventarioFinal);
-                }
-                return 0;
+                    return _pAddedModel.
+   
             }
+        }
+
+       
         }
 
         public double Outsourcing { get { return 0; } }
@@ -105,11 +111,13 @@ namespace LoDeProduccion
         {
             get
             {
+
                 if (TrabajadoresRequeridos < _pAddedModel.FuerzaLaboralInicial)
                 {
                     return _pAddedModel.FuerzaLaboralInicial - TrabajadoresRequeridos;
                 }
                 return 0;
+
             }
         }
 
@@ -117,7 +125,9 @@ namespace LoDeProduccion
         {
             get
             {
+
                 return Contratado * _pAddedModel.CostoCapacitar;
+
             }
         }
 
@@ -125,11 +135,13 @@ namespace LoDeProduccion
         {
             get
             {
+
                 if (TrabajadoresRequeridos > _pAddedModel.FuerzaLaboralInicial)
                 {
                     return TrabajadoresRequeridos - _pAddedModel.FuerzaLaboralInicial;
                 }
                 return 0;
+
             }
         }
 
@@ -137,6 +149,7 @@ namespace LoDeProduccion
         {
             get
             {
+
                 return Despido * _pAddedModel.CostoDespedir;
             }
         }
@@ -165,6 +178,7 @@ namespace LoDeProduccion
                 return MateriaPrima + ContratadosCosto + DespidosCosto + CostoHorasNormales + CostoFaltante;
             }
         }
+
 
     }
 }

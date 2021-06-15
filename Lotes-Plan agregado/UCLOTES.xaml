@@ -37,6 +37,7 @@
                 <StackPanel  Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right" Margin="0 0 0 0">
                     <Label Content="Costo del producto" Margin="0 10 0 0 " HorizontalAlignment="Right"/>
                     <Label Content="Costo de pedir" Margin="0 16 0 0" HorizontalAlignment="Right" />
+                    <Label Content="Inventario inicial" Margin="0 16 0 0" HorizontalAlignment="Right" />
                     <Label Content="Costo de mantener" Margin="0 16 0 0" HorizontalAlignment="Right"/>
                     <Label Content="Necesidades" Margin="0 16 0 0"  HorizontalAlignment="Right"/>
                 </StackPanel>
@@ -44,6 +45,7 @@
                 <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch">
                     <TextBox x:Name="txtcm" Height="30" Width="80"  Margin="0 8 0 0 " KeyDown="txtcm_KeyDown"/>
                     <TextBox x:Name="txtcp" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtcp_KeyDown"/>
+                    <TextBox x:Name="txtii" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtii_KeyDown" />
                     <TextBox x:Name="txtcma" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtcma_KeyDown"/>
                     <TextBox x:Name="txtnn" Height="30" Width="80"   Margin="0 10 0 0" KeyDown="txtnn_KeyDown"/>
                 </StackPanel>
