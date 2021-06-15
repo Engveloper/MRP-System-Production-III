@@ -14,6 +14,8 @@
             CostoDeFaltante = fln.CostoFaltante;
             Contratar = fln.ContratadosCosto;
             Despedir = fln.DespidosCosto;
+            CostoHorasNormales = fln.CostoHorasNormales;
+            Total = fln.Total;
         }
 
         public double HorasDisponibles { get; set; }
@@ -27,6 +29,8 @@
         public int Outsourcing { get; set; } = 0;
         public double Contratar { get; set; }
         public double Despedir { get; set; }
+        public double CostoHorasNormales { get; set; }
+        public double Total { get; set; }
 
 
     }

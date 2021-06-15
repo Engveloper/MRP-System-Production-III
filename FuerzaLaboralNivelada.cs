@@ -141,6 +141,30 @@ namespace LoDeProduccion
             }
         }
 
+        public double HorasRequeridas
+        {
+            get
+            {
+                var unidades = _demanda + _pAddedModel.InventarioDeSeguridad - _pAddedModel.InventarioInicial;
+                return unidades * _pAddedModel.HorasRequeridaParaUnidad;
+            }
+        }
+
+        public double CostoHorasNormales
+        {
+            get
+            {
+                return HorasRequeridas * _pAddedModel.HoraNormal;
+            }
+        }
+
+        public double Total
+        {
+            get
+            {
+                return MateriaPrima + ContratadosCosto + DespidosCosto + CostoHorasNormales + CostoFaltante;
+            }
+        }
 
     }
 }
