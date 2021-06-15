@@ -8,12 +8,13 @@ namespace LoDeProduccion
 {
     public class FuerzaLaboralNivelada
     {
-        private readonly PAddedModel _pAddedModel;
-        private readonly int _demandaPromedio;
+
+        public PAddedModel _pAddedModel;
+        private readonly double _demandaPromedio;
         private int _demanda;
         private int _dias;
 
-        public FuerzaLaboralNivelada(int demandaPromedio, PAddedVariance variance, PAddedModel pAddedModel)
+        public FuerzaLaboralNivelada(double demandaPromedio, PAddedVariance variance, PAddedModel pAddedModel)
         {
             _pAddedModel = pAddedModel;
             _demandaPromedio = demandaPromedio;
@@ -39,11 +40,12 @@ namespace LoDeProduccion
             }
         }
 
-        private int TrabajadoresRequeridos
+
+        public int TrabajadoresRequeridos
         {
             get
             {
-                return _demandaPromedio / UnidadesPorTrabajadorMensual;
+                return (int)_demandaPromedio / UnidadesPorTrabajadorMensual;
             }
         }
 
@@ -63,7 +65,8 @@ namespace LoDeProduccion
         {
             get
             {
-                return ProduccionReal + InventarioInicial - _demandaPromedio;
+                return (int)(ProduccionReal + InventarioInicial - _demandaPromedio);
+
             }
         }
 
@@ -83,16 +86,23 @@ namespace LoDeProduccion
         {
             get
             {
-                return 0;//needs implementation
+
+                return InventarioFinal;
             }
         }
 
-        public double CostoFijo
+        public double CostoFaltante
         {
             get
             {
-                return 0;//needs implementation
+                if(InventarioFinal < 0)
+                {
+                    return _pAddedModel.
+   
             }
+        }
+
+       
         }
 
         public double Outsourcing { get { return 0; } }
@@ -101,7 +111,13 @@ namespace LoDeProduccion
         {
             get
             {
-                return 0;//needs implementation
+
+                if (TrabajadoresRequeridos < _pAddedModel.FuerzaLaboralInicial)
+                {
+                    return _pAddedModel.FuerzaLaboralInicial - TrabajadoresRequeridos;
+                }
+                return 0;
+
             }
         }
 
@@ -109,7 +125,9 @@ namespace LoDeProduccion
         {
             get
             {
-                return 0;//needs implementation
+
+                return Contratado * _pAddedModel.CostoCapacitar;
+
             }
         }
 
@@ -117,7 +135,13 @@ namespace LoDeProduccion
         {
             get
             {
-                return 0;//needs implementation
+
+                if (TrabajadoresRequeridos > _pAddedModel.FuerzaLaboralInicial)
+                {
+                    return TrabajadoresRequeridos - _pAddedModel.FuerzaLaboralInicial;
+                }
+                return 0;
+
             }
         }
 
@@ -125,7 +149,33 @@ namespace LoDeProduccion
         {
             get
             {
-                return 0;//needs implementation
+
+                return Despido * _pAddedModel.CostoDespedir;
+            }
+        }
+
+        public double HorasRequeridas
+        {
+            get
+            {
+                var unidades = _demanda + _pAddedModel.InventarioDeSeguridad - _pAddedModel.InventarioInicial;
+                return unidades * _pAddedModel.HorasRequeridaParaUnidad;
+            }
+        }
+
+        public double CostoHorasNormales
+        {
+            get
+            {
+                return HorasRequeridas * _pAddedModel.HoraNormal;
+            }
+        }
+
+        public double Total
+        {
+            get
+            {
+                return MateriaPrima + ContratadosCosto + DespidosCosto + CostoHorasNormales + CostoFaltante;
             }
         }
 

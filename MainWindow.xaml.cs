@@ -12,10 +12,14 @@ namespace LoDeProduccion
         public MainWindow()
         {
             InitializeComponent();
+
+            Contenedor.Children.Add(new UCInicio());
+
         }
 
+        
+    private void Window_Loaded(object sender, RoutedEventArgs e)
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Contenedor.Children.Clear();
             Contenedor.Children.Add(new UCInicio());
